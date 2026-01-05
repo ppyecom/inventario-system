@@ -38,7 +38,7 @@ services:
     container_name: inventario-app
     restart: always
     environment:
-      DATABASE_URL: postgresql://postgres:postgres123@postgres:5432/inventario
+      DATABASE_URL: postgresql://postgres:root@postgres:5433/inventario
       REDIS_URL: redis://redis:6379
       NEXTAUTH_SECRET: tu-secreto-super-seguro-cambialo
       NEXTAUTH_URL: http://localhost:3000
