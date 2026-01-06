@@ -129,6 +129,13 @@ export async function GET() {
       },
     });
 
+    // Convertir BigInt a Number en salesByDay
+    const salesByDayFormatted = (salesByDay as any[]).map((day) => ({
+      date: day.date,
+      orders: Number(day.orders), // Convertir BigInt a Number
+      total: Number(day.total), // Convertir BigInt a Number
+    }));
+
     return NextResponse.json({
       totalProducts,
       totalCustomers,
@@ -137,7 +144,7 @@ export async function GET() {
       lowStockProducts,
       recentOrders,
       topProducts: topProductsWithDetails,
-      salesByDay,
+      salesByDay: salesByDayFormatted,
     });
   } catch (error) {
     console.error('Error fetching dashboard stats:', error);
